@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify, g
 from flask_login import LoginManager
 app = Flask(__name__)
 import models 
@@ -6,7 +6,8 @@ import models
 DEBUG = True
 
 ############import resources here!
-from resources.user import user
+from resources.users import user
+from resources.games import game
 #################
 
 login_manager = LoginManager() #sets up the ability to set up the session
@@ -43,6 +44,8 @@ def hello():
 ############################need cors here!
 # CORS() for user
 ##################################
+app.register_blueprint(game, url_prefix="/api/v1/games")
+
 
 if __name__ == "__main__":
     #use this when models are ready
