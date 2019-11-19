@@ -1,8 +1,12 @@
 from flask import Flask
 from flask_login import LoginManager
 app = Flask(__name__)
+import models 
+
+DEBUG = True
 
 ############import resources here!
+from resources.user import user
 #################
 
 login_manager = LoginManager() #sets up the ability to set up the session
@@ -10,6 +14,12 @@ login_manager = LoginManager() #sets up the ability to set up the session
 app.secret_key = "somethibgasjdhfs" #need this to encode session
 login_manager.init_app(app) #setting up session
 
+# @login_manager.user_loader
+# def load_user(userid):
+#     try:
+#         return models.User.get(models.User.id == userid)
+#     except models.DoesNotExist:
+#         return None
 
 @app.before_request
 def before_request():
@@ -31,11 +41,11 @@ def hello():
 
 
 ############################need cors here!
-# CORS()
+# CORS() for user
 ##################################
 
 if __name__ == "__main__":
     #use this when models are ready
     # print("tables connected")
     # models.initialize()
-    app.run()
+    app.run(debug=DEBUG)
