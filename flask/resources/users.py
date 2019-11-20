@@ -11,7 +11,7 @@ user = Blueprint('users', 'user')
 @user.route('/register', methods=["POST"])
 def register():
     payload = request.get_json()
-    payload['email'].lower()
+    payload['email'] = payload['email'].lower()
     try:
         models.User.get(models.User.email == payload['email']) 
         return jsonify(data={}, status={"code": 401, "message": "A user with that name already exists"})
