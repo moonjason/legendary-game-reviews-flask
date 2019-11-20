@@ -5,10 +5,8 @@ import models
 
 DEBUG = True
 
-############import resources here!
 from resources.users import user
 from resources.games import game
-#################
 
 login_manager = LoginManager() #sets up the ability to set up the session
 
