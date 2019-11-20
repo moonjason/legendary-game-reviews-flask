@@ -45,10 +45,10 @@ def hello():
 ##################################
 CORS(game, origins=["http://localhost:3000"], supports_credentials=True)
 app.register_blueprint(game, url_prefix="/api/v1/games")
-
+app.register_blueprint(user, url_prefix="/users")
 
 if __name__ == "__main__":
     #use this when models are ready
-    # print("tables connected")
-    # models.initialize()
+    print("tables connected")
+    models.initialize()
     app.run(debug=DEBUG)
