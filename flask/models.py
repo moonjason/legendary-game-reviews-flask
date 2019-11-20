@@ -11,18 +11,18 @@ class User(UserMixin, Model):
   class Meta:
     database = DATABASE
 
-class Game(Model):
-    title = CharField()
-    genres = CharField()
-    creator = CharField()
-    release_date = CharField()
-    description = CharField()
-
+class Review(Model):
+    review_id = CharField()
+    game_id = CharField()
+    user_id = CharField()
+    up_votes = CharField()
+    down_votes = CharField()
+    body = CharField()
     class Meta: database = DATABASE
 
 
 def initialize():
   DATABASE.connect()
-  DATABASE.create_tables([User, Game], safe=True)
+  DATABASE.create_tables([User, Review], safe=True)
   print("Tables Created")
   DATABASE.close()
