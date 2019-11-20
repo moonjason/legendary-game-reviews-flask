@@ -44,7 +44,7 @@ app.register_blueprint(user, url_prefix="/user")
 # CORS for Game?
 
 app.register_blueprint(game, url_prefix="/api/v1/games")
-
+app.register_blueprint(user, url_prefix="/users")
 
 if __name__ == "__main__":
     #use this when models are ready
