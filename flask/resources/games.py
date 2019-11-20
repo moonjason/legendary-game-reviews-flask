@@ -10,6 +10,7 @@ game = Blueprint('games', 'game')
 @game.route("/<page>", methods=["GET"])
 def get_games(page):
     get_all_games = requests.get(f"https://rawg-video-games-database.p.rapidapi.com/games?page={page}", headers={"content-type": "application/json", "x-rapidapi-host": "rawg-video-games-database.p.rapidapi.com", "x-rapidapi-key": "f0d3b6eff0mshe2f0073ca021f92p1efce7jsn41df200f1529"})
+    print(get_all_games.json())
     return jsonify(get_all_games.json())
 
 @game.route("/<page>/<id>", methods=["GET"])

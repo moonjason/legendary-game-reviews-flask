@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, g
+from flask_cors import CORS
 from flask_login import LoginManager
 app = Flask(__name__)
 import models 
@@ -42,6 +43,7 @@ def hello():
 ############################need cors here!
 # CORS() for user
 ##################################
+CORS(game, origins=["http://localhost:3000"], supports_credentials=True)
 app.register_blueprint(game, url_prefix="/api/v1/games")
 
 
