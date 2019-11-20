@@ -8,17 +8,19 @@ class User(UserMixin, Model):
   email = CharField()
   password = CharField()
 
-  class Meta:
+  class Meta: 
     database = DATABASE
 
 class Game(Model):
-    title = CharField()
-    genres = CharField()
-    creator = CharField()
-    release_date = CharField()
-    description = CharField()
+  title = CharField()
+  genres = CharField()
+  creator = CharField()
+  release_date = CharField()
+  description = CharField()
 
-    class Meta: database = DATABASE
+  class Meta: database = DATABASE
+
+
 
 
 def initialize():
