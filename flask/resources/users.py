@@ -28,7 +28,7 @@ def register():
             user_dict = model_to_dict(user)
             print(user_dict)
             print(type(user_dict))
-            del user_dict['password'] #
+            del user_dict['password']
             return jsonify(data=user_dict, status={"code": 201, "message": "Success"})
         else:
             return jsonify(data={}, status={"code": 401, "message": "Passwords do not match"})
