@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, g
+from flask_cors import CORS
 from flask_login import LoginManager
-app = Flask(__name__)
 import models 
 
 DEBUG = True
@@ -10,15 +10,17 @@ from resources.games import game
 
 login_manager = LoginManager() #sets up the ability to set up the session
 
+app = Flask(__name__)
+
 app.secret_key = "somethibgasjdhfs" #need this to encode session
 login_manager.init_app(app) #setting up session
 
-# @login_manager.user_loader
-# def load_user(userid):
-#     try:
-#         return models.User.get(models.User.id == userid)
-#     except models.DoesNotExist:
-#         return None
+@login_manager.user_loader
+def load_user(userid):
+    try:
+        return models.User.get(models.User.id == userid)
+    except models.DoesNotExist:
+        return None
 
 @app.before_request
 def before_request():
@@ -32,16 +34,15 @@ def after_request(response):
     g.db.close()
     return response
 
-###############move this to controller when ready
-@app.route("/")
-def hello():
-    return "Hello World!"
-#####################################
-
 
 ############################need cors here!
 # CORS() for user
+CORS(user, origins=["http://localhost:3000"], supports_credentials=True)
+app.register_blueprint(user, url_prefix="/user")
+
 ##################################
+# CORS for Game?
+
 app.register_blueprint(game, url_prefix="/api/v1/games")
 app.register_blueprint(user, url_prefix="/users")
 
