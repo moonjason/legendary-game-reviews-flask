@@ -33,7 +33,6 @@ def register():
 
 
 
-
 @user.route('/login', methods=["POST"])
 def login():
     payload = request.get_json()

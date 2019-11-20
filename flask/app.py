@@ -41,8 +41,8 @@ CORS(user, origins=["http://localhost:3000"], supports_credentials=True)
 app.register_blueprint(user, url_prefix="/user")
 
 ##################################
-# CORS for Game?
 
+CORS(game, origins=["http://localhost:3000"], supports_credentials=True)
 app.register_blueprint(game, url_prefix="/api/v1/games")
 
 if __name__ == "__main__":
