@@ -9,19 +9,19 @@ game = Blueprint('games', 'game')
 
 @game.route("/<page>", methods=["GET"])
 def get_games(page):
-    get_all_games = requests.get(f"https://api.rawg.io/api/games?dates=2019-01-01,2019-12-31&ordering=-added&page={page}", headers={"content-type": "application/json", "x-rapidapi-host": "rawg-video-games-database.p.rapidapi.com", "x-rapidapi-key": "f0d3b6eff0mshe2f0073ca021f92p1efce7jsn41df200f1529"})
-    print(get_all_games.json())
-    return jsonify(get_all_games.json())
+    all_games = requests.get(f"https://api.rawg.io/api/games?dates=2019-01-01,2019-12-31&ordering=-added&page={page}", headers={"content-type": "application/json", "x-rapidapi-host": "rawg-video-games-database.p.rapidapi.com", "x-rapidapi-key": "f0d3b6eff0mshe2f0073ca021f92p1efce7jsn41df200f1529"})
+    return jsonify(all_games.json())
 
 @game.route("/<page>/<id>", methods=["GET"])
 def get_one_game(page, id):
-    get_one_game = requests.get(f"https://api.rawg.io/api/games/{id}", headers={"content-type": "application/json", "x-rapidapi-host": "rawg-video-games-database.p.rapidapi.com", "x-rapidapi-key": "f0d3b6eff0mshe2f0073ca021f92p1efce7jsn41df200f1529"})
-    return jsonify(get_one_game.json())
+    one_game = requests.get(f"https://api.rawg.io/api/games/{id}", headers={"content-type": "application/json", "x-rapidapi-host": "rawg-video-games-database.p.rapidapi.com", "x-rapidapi-key": "f0d3b6eff0mshe2f0073ca021f92p1efce7jsn41df200f1529"})
+    return jsonify(one_game.json())
 
-# @game.route("/", methods=["GET"])
-# def get_games():
-#     get_all_games = requests.get("http://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=08D497C10BC95B83E82D304CD1293794&format=json", data="fields *; limit 10;", headers={"content-type": "application/json", "user-key": "08D497C10BC95B83E82D304CD1293794"})
-#     return jsonify(get_all_games.json())
+@game.route("/<page>/<id>/<search>", methods=["GET"])
+def get_matched_games(page, id, search):
+     matched_games = requests.get(f"https://api.rawg.io/api/games?search={search}", headers={"content-type": "application/json", "x-rapidapi-host": "rawg-video-games-database.p.rapidapi.com", "x-rapidapi-key": "f0d3b6eff0mshe2f0073ca021f92p1efce7jsn41df200f1529"})
+     return jsonify(matched_games.json())
+
 
 
 
