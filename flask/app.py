@@ -7,6 +7,7 @@ DEBUG = True
 
 from resources.users import user
 from resources.games import game
+from resources.reviews import review
 
 login_manager = LoginManager() #sets up the ability to set up the session
 
@@ -45,6 +46,7 @@ app.register_blueprint(user, url_prefix="/user")
 
 # CORS(game, origins=["http://localhost:3000"], supports_credentials=True)
 app.register_blueprint(game, url_prefix="/api/v1/games")
+app.register_blueprint(review, url_prefix="/api/v1/reviews")
 
 if __name__ == "__main__":
     #use this when models are ready
