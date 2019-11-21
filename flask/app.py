@@ -11,6 +11,7 @@ from resources.games import game
 login_manager = LoginManager() #sets up the ability to set up the session
 
 app = Flask(__name__)
+CORS(app, supports_credentials=True)
 
 app.secret_key = "somethibgasjdhfs" #need this to encode session
 login_manager.init_app(app) #setting up session
@@ -37,12 +38,12 @@ def after_request(response):
 
 ############################need cors here!
 # CORS() for user
-CORS(user, origins=["http://localhost:3000"], supports_credentials=True)
+# CORS(user, origins=["http://localhost:3000"], supports_credentials=True)
 app.register_blueprint(user, url_prefix="/user")
 
 ##################################
 
-CORS(game, origins=["http://localhost:3000"], supports_credentials=True)
+# CORS(game, origins=["http://localhost:3000"], supports_credentials=True)
 app.register_blueprint(game, url_prefix="/api/v1/games")
 
 if __name__ == "__main__":
