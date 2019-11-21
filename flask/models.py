@@ -12,12 +12,13 @@ class User(UserMixin, Model):
     database = DATABASE
 
 class Review(Model):
-    review_id = CharField()
     game_id = CharField()
-    user_id = CharField()
-    up_votes = CharField()
-    down_votes = CharField()
+    user_id = ForeignKeyField(User)
+    title = CharField() 
+    up_votes = CharField() 
+    down_votes = CharField() 
     body = CharField()
+    is_positive = BooleanField()
     class Meta: database = DATABASE
 
 
