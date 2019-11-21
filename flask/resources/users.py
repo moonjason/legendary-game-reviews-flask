@@ -6,6 +6,7 @@ from flask_login import login_user, current_user
 from playhouse.shortcuts import model_to_dict
 
 user = Blueprint('users', 'user')
+# user = Blueprint("users", "user", url_prefix="/user")
 
 ###############this is the controller basically
 @user.route('/', methods=["GET"])
@@ -38,7 +39,7 @@ def login():
     payload = request.get_json()
     print(payload, '< --- this is playload')
     try:
-        user = models.User.get(models.User.email== payload['email'])
+        user = models.User.get(models.User.username == payload['username'])
         user_dict = model_to_dict(user)
         if(check_password_hash(user_dict['password'], payload['password'])):
             del user_dict['password']
