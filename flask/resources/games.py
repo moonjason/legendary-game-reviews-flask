@@ -13,12 +13,12 @@ def get_games(page):
     return jsonify(all_games.json())
 
 @game.route("/appid/<id>", methods=["GET"])
-def get_one_game(page, id):
+def get_one_game(id):
     one_game = requests.get(f"https://api.rawg.io/api/games/{id}", headers={"content-type": "application/json", "x-rapidapi-host": "rawg-video-games-database.p.rapidapi.com", "x-rapidapi-key": "f0d3b6eff0mshe2f0073ca021f92p1efce7jsn41df200f1529"})
     return jsonify(one_game.json())
 
 @game.route("/query/filter/<search>", methods=["GET"])
-def get_matched_games(page, id, search):
+def get_matched_games(search):
      matched_games = requests.get(f"https://api.rawg.io/api/games?search={search}", headers={"content-type": "application/json", "x-rapidapi-host": "rawg-video-games-database.p.rapidapi.com", "x-rapidapi-key": "f0d3b6eff0mshe2f0073ca021f92p1efce7jsn41df200f1529"})
      return jsonify(matched_games.json())
 
