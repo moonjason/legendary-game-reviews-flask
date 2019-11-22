@@ -4,6 +4,25 @@ from flask import Blueprint, jsonify, request
 from playhouse.shortcuts import model_to_dict
 review = Blueprint('reviews', 'review')
 
+# @players.route('/', methods=["GET"])
+# def get_all_players():
+#     try:
+#         players = [model_to_dict(players) for players in models.Players.select()]
+#         print(players)
+#         return jsonify(data=players, status={"code": 200, "message": "Success"})
+#     except models.DoesNotExist:
+#         return jsonify(data={}, status={"code": 401, "message": "Error getting the resources"})
+
+@review.route("/", methods=["GET"])
+def get_all_reviews():
+  try:
+    reviews = [model_to_dict(reviews) for reviews in models.Review.select()]
+    print(reviews)
+    return jsonify(data=reviews, status={"code": 201, "message": "Success"})
+  except models.DoesNotExist:
+    return jsonify(data={}, status={"code": 401, "message": "Error getting the resources"})
+
+
 @review.route("/", methods=["POST"])
 def add_review():
   payload = request.get_json()
