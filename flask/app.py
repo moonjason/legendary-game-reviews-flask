@@ -16,6 +16,8 @@ CORS(app, supports_credentials=True)
 
 app.secret_key = "somethibgasjdhfs" #need this to encode session
 login_manager.init_app(app) #setting up session
+login_manager.login_view = "/login"
+
 
 @login_manager.user_loader
 def load_user(userid):
