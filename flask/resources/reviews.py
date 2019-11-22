@@ -4,6 +4,8 @@ from flask import Blueprint, jsonify, request
 from playhouse.shortcuts import model_to_dict
 review = Blueprint('reviews', 'review')
 
+# @review.route("/", methods=)
+
 @review.route("/", methods=["POST"])
 def add_review():
   payload = request.get_json()
