@@ -13,10 +13,6 @@ from resources.reviews import review
 
 login_manager = LoginManager() #sets up the ability to set up the session
 
-if 'ON_HEROKU' in os.environ:
-    print('hitting')
-    models.initialize()
-
 app = Flask(__name__)
 CORS(app, origins=["http://localhost:3000", "https://legendary-game-reviews.herokuapp.com"], supports_credentials=True)
 
@@ -49,6 +45,12 @@ app.register_blueprint(user, url_prefix="/user")
 
 app.register_blueprint(game, url_prefix="/api/v1/games")
 app.register_blueprint(review, url_prefix="/api/v1/reviews")
+
+
+if 'ON_HEROKU' in os.environ:
+    print('hitting')
+    models.initialize()
+
 
 if __name__ == "__main__":
     #use this when models are ready
