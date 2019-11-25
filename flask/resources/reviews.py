@@ -13,7 +13,6 @@ def get_all_reviews():
   except models.DoesNotExist:
     return jsonify(data={}, status={"code": 401, "message": "Error getting the resources"})
 
-
 @review.route("/", methods=["POST"])
 def add_review():
   payload = request.get_json()
