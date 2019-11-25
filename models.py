@@ -4,7 +4,7 @@ from playhouse.db_url import connect
 from peewee import *
 from flask_login import UserMixin
 
-DATABASE = connect(os.environ.get('DATABAUSE_URL'))
+DATABASE = connect(os.environ.get('DATABASE_URL'))
 # DATABASE = SqliteDatabase('game.sqlite')
 
 class User(UserMixin, Model):
