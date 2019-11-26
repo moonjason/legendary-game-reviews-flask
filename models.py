@@ -19,7 +19,7 @@ class Review(Model):
     title = CharField() 
     up_votes = CharField() 
     down_votes = CharField() 
-    body = CharField()
+    body = TextField()
     is_positive = BooleanField()
     class Meta: database = DATABASE
 
