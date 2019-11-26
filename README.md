@@ -1,6 +1,6 @@
 # Legendary Game Reviews - Back End 
 
-[Front-End Repository](https://github.com/moonjason/legendarygamereviews "Front-end Repository")
+[Front-End Repository](https://github.com/moonjason/legendary-game-reviews-react "Front-end Repository")
 
 ## Using Flask, SQLite, and Peewee 
 
