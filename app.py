@@ -19,8 +19,6 @@ CORS(app, origins=["http://localhost:3000", "https://legendary-game-reviews.hero
 app.secret_key = "somethibgasjdhfs" #need this to encode session
 login_manager.init_app(app) #setting up session
 login_manager.login_view = "/login"
-hello
-
 @login_manager.user_loader
 def load_user(userid):
     try:
