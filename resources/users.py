@@ -6,19 +6,16 @@ from flask_login import login_user, current_user, logout_user
 from playhouse.shortcuts import model_to_dict
 
 user = Blueprint('users', 'user')
-# user = Blueprint("users", "user", url_prefix="/user")
 
-###############this is the controller basically
 @user.route('/', methods=["GET"])
 def test():
-    return 'for surely'
+    return 'route working'
 
 @user.route('/register', methods=["POST"])
 def register():
     payload = request.get_json()
     payload['username'] = payload['username'].lower()
     payload['email'] = payload['email'].lower()
-    print(payload)
  
     try:
         models.User.get(models.User.email == payload['email']) 
@@ -33,7 +30,6 @@ def register():
         del currentUser['password']
         
         user_dict = model_to_dict(user)
-        print(type(user_dict))
         del user_dict['password']
         return jsonify(data=user_dict, status={"code": 201, "message": "Success"}, session=currentUser)
 
@@ -41,7 +37,6 @@ def register():
 def login():
     payload = request.get_json()
 
-    print(payload, '< --- this is playload')
     try:
         user = models.User.get(models.User.username == payload['username'])
         user_dict = model_to_dict(user)
